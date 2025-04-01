@@ -20,6 +20,8 @@ public class GameUIScript : MonoBehaviour
     public GameObject ARSession;
     public GameObject MainCamera;
 
+    public GameObject BlackImage;
+
     public GameObject ChessboardPrefab;
     private GameObject chessboardInstance;
     private Chessboard chessboardScript;
@@ -55,6 +57,7 @@ public class GameUIScript : MonoBehaviour
         MainCamera.SetActive(false);
         PlacementManagerInstance = Instantiate(PlacementManager);
         pm_script = PlacementManagerInstance.GetComponent<BoardSpawnManager>();
+        BlackImage.SetActive(false);
         PlacementManagerInstance.SetActive(true);
         XROrigin.SetActive(true);
         ARSession.SetActive(true);

@@ -1530,6 +1530,7 @@ MonoBehaviour:
   XROrigin: {fileID: 1554555615}
   ARSession: {fileID: 1400972510}
   MainCamera: {fileID: 963194225}
+  BlackImage: {fileID: 791541306}
   ChessboardPrefab: {fileID: 41086496}
 --- !u!1 &326833127
 GameObject:

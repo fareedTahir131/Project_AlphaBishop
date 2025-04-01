@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 using Firebase;
 using Firebase.Auth;
 using Firebase.Firestore;
@@ -13,6 +14,10 @@ using UnityEngine.SceneManagement;
 public class FirebaseAuthManager : MonoBehaviour
 {
     public static FirebaseAuthManager instance;
+
+    public GameObject responce;
+    public Text ResponceText;
+
     private FirebaseApp firebaseApp;
     private FirebaseAuth auth;
     private FirebaseUser user;
@@ -37,9 +42,20 @@ public class FirebaseAuthManager : MonoBehaviour
     }
     void Start()
     {
+        responce.SetActive(false);
         InitializeFirebase();
     }
-
+    public void ShowResponce(string msg)
+    {
+        ResponceText.text = msg;
+        responce.SetActive(true);
+        StartCoroutine(waitToDisableResponce());
+    }
+    IEnumerator waitToDisableResponce()
+    {
+        yield return new WaitForSeconds(2);
+        responce.SetActive(false);
+    }
     void InitializeFirebase()
     {
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
@@ -179,6 +195,7 @@ public class FirebaseAuthManager : MonoBehaviour
                 //LoadingPanel.SetActive(false);
                 //ConsoleManager.instance.ShowMessage("Email or Password not Valid!");
                 Debug.Log("Email or Password not Valid!");
+                ShowResponce("Email or Password not Valid!");
                 Debug.Log("SignInWithEmailAndPasswordAsync encountered an error: " + task.Exception);
                 return;
             }
@@ -187,6 +204,7 @@ public class FirebaseAuthManager : MonoBehaviour
             {
                 FirebaseUser firebaseUser = task.Result.User;
                 Debug.Log("Login successful: " + firebaseUser.Email);
+                ShowResponce("Login successful");
                 UserID = firebaseUser.UserId;
                 Email = firebaseUser.Email;
                 //LoadUserData(firebaseUser.UserId);
@@ -206,6 +224,7 @@ public class FirebaseAuthManager : MonoBehaviour
             {
                 FirebaseUser firebaseUser = task.Result.User; // Access the User property
                 Debug.Log("Signup successful: " + firebaseUser.Email);
+                ShowResponce("Signup successful");
                 SceneManager.LoadScene(1);
                 //UserID = firebaseUser.UserId;
                 //Email = email;
@@ -217,6 +236,7 @@ public class FirebaseAuthManager : MonoBehaviour
             else
             {
                 Debug.Log("Email or Password not Valid!");
+                ShowResponce("Email or Password not Valid!");
                 Debug.LogError("Signup failed: " + task.Exception);
             }
         });

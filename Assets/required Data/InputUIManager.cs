@@ -91,22 +91,26 @@ public class InputUIManager : MonoBehaviour
         if (s_emailInput.text == "")
         {
             Debug.Log("Email is Empty!");
+            FirebaseAuthManager.instance.ShowResponce("Email is Empty!");
             return;
         }
         if (!ValidateEmail(s_emailInput.text))
         {
             Debug.Log("Email not Valid!");
+            FirebaseAuthManager.instance.ShowResponce("Email not Valid!");
             return;
         }
         if (s_passwordInput.text == "")
         {
             Debug.Log("Password is Empty!");
+            FirebaseAuthManager.instance.ShowResponce("Password is Empty!");
             return;
         }
 
         if (s_passwordInput.text.Length < 8)
         {
             Debug.Log("Password is not 8 characters!");
+            FirebaseAuthManager.instance.ShowResponce("Password is not 8 characters!");
             return;
         }
 
@@ -171,47 +175,56 @@ public class InputUIManager : MonoBehaviour
         if (nameInput.text == "")
         {
             Debug.Log("Name is Empty!");
+            FirebaseAuthManager.instance.ShowResponce("Name is Empty!");
             return;
         }
         if (SurnameInput.text == "")
         {
-            Debug.Log("UserName is Empty!");
+            Debug.Log("Surname is Empty!");
+            FirebaseAuthManager.instance.ShowResponce("Surname is Empty!");
             return;
         }
         if (UsernameInput.text == "")
         {
             Debug.Log("UserName is Empty!");
+            FirebaseAuthManager.instance.ShowResponce("UserName is Empty!");
             return;
         }
         if (emailInput.text == "")
         {
             Debug.Log("Email is Empty!");
+            FirebaseAuthManager.instance.ShowResponce("Email is Empty!");
             return;
         }
         if (passwordInput.text == "")
         {
             Debug.Log("Password is Empty!");
+            FirebaseAuthManager.instance.ShowResponce("Password is Empty!");
             return;
         }
         if (ConfirmPasswordInput.text == "")
         {
             Debug.Log("Confirm Password Password is Empty!");
+            FirebaseAuthManager.instance.ShowResponce("Confirm Password Password is Empty!");
             return;
         }
         if (ConfirmPasswordInput.text != passwordInput.text)
         {
             Debug.Log("Password Doesn't match");
+            FirebaseAuthManager.instance.ShowResponce("Password Doesn't match");
             return;
         }
         if (passwordInput.text.Length < 8)
         {
             Debug.Log("Password is not 8 characters!");
+            FirebaseAuthManager.instance.ShowResponce("Password is not 8 characters!");
             return;
         }
 
         if (!ValidateEmail(emailInput.text))
         {
             Debug.Log("Email not Valid!");
+            FirebaseAuthManager.instance.ShowResponce("Email not Valid!");
             return;
         }
 
