@@ -9,7 +9,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.FYP.ARChess</string>
+	<string>com.ARfyp.ARChess</string>
 	<key>PROJECT_ID</key>
 	<string>ar-chess-e9e03</string>
 	<key>STORAGE_BUCKET</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:684576813623:ios:4d4b44ff7d4522e28585b2</string>
+	<string>1:684576813623:ios:36f012ca94cef68d8585b2</string>
 </dict>
 </plist>

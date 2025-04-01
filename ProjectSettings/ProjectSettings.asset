@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 0
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: FYP
+  companyName: ARfyp
   productName: AR Chess
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -170,7 +170,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.FYP.ARChess
     Standalone: com.DefaultCompany.Project-AlphaBishop
-    iPhone: com.FYP.ARChess
+    iPhone: com.ARfyp.ARChess
   buildNumber:
     Standalone: 0
     VisionOS: 0
