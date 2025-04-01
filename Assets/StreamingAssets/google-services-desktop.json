@@ -1,0 +1,31 @@
+{
+  "project_info": {
+    "project_number": "684576813623",
+    "project_id": "ar-chess-e9e03",
+    "storage_bucket": "ar-chess-e9e03.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:684576813623:ios:4d4b44ff7d4522e28585b2",
+        "android_client_info": {
+          "package_name": "com.FYP.ARChess"
+        }
+      },
+      "api_key": [
+        {
+          "current_key": "AIzaSyBn0x9VMViSuoo9uwCXgSB6wJDfL6AP_bE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 0
+        },
+        "appinvite_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
