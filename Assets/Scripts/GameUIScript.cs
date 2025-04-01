@@ -42,7 +42,7 @@ public class GameUIScript : MonoBehaviour
 
     private void Start()
     {
-        OnARGameButton();
+        //OnARGameButton();
     }
 
     // Buttons
