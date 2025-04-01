@@ -9,7 +9,7 @@ PlayerSettings:
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
   defaultScreenOrientation: 0
-  targetDevice: 2
+  targetDevice: 0
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: FYP
@@ -42,8 +42,6 @@ PlayerSettings:
   m_SplashScreenLogos:
   - logo: {fileID: 10404, guid: 0000000000000000f000000000000000, type: 0}
     duration: 2
-  - logo: {fileID: 21300000, guid: c7370ccbcb0907748835b5acbc385ae9, type: 3}
-    duration: 3
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
   defaultScreenWidth: 1920
@@ -166,7 +164,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.pratyushgta.HoloChess
+    Android: com.FYP.ARChess
     Standalone: com.DefaultCompany.Project-AlphaBishop
     iPhone: com.FYP.ARChess
   buildNumber:
@@ -296,7 +294,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 9d1484c6418884f429b7b78f809a832d, type: 3}
+      m_Icon: {fileID: 2800000, guid: a1003a63b879b4da0bc2387219d400e6, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0

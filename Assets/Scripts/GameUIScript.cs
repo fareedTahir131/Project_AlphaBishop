@@ -38,6 +38,11 @@ public class GameUIScript : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        OnARGameButton();
+    }
+
     // Buttons
     public void OnARGameButton()
     {
@@ -119,7 +124,8 @@ public class GameUIScript : MonoBehaviour
         VictoryScreen.SetActive(false);
         TurnScreen.SetActive(false);
         */
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(0);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void onQueenPromotion()

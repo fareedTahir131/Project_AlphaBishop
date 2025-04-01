@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LoginSignup.unity
     guid: dee0d82cbb63e4653bee7e00a9bd87a2
+  - enabled: 1
+    path: Assets/Scenes/AR.unity
+    guid: 5cbcefecdf24641a0bde6388af439ad3
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 8b569300cd08b1746ac796c51cfca61f, type: 2}
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 49c82f281c8254361b26b9a0e89eede3, type: 2}
