@@ -6,52 +6,21 @@ using UnityEngine.UI;
 public class SwipeManager : MonoBehaviour
 {
     public Image[] screens; // Array of screens (Screen 1, Screen 2, Screen 3)
-    public float swipeRange = 50f; // Minimum distance for a swipe to be considered
-    public float indicatorMovementDuration = 0.5f;
+    public float swipeRange = 50f; // Minimum swipe distance
 
-    private int currentIndex = 0;
+    private int currentIndex = -1; // Start with no screen active
     private Vector2 startTouchPosition;
     private Vector2 currentTouchPosition;
     private bool stopTouch = false;
 
+
+    private void Start()
+    {
+        ResetSwipeManager();
+    }
     void Update()
     {
-        if (IsTouchWithinImageBounds() && IsAnyScreenActive())
-        {
-            Swipe();
-        }
-    }
-
-    private bool IsTouchWithinImageBounds()
-    {
-        Vector2 touchPosition = Vector2.zero;
-
-        if (Input.touchCount > 0)
-        {
-            touchPosition = Input.GetTouch(0).position;
-        }
-        else if (Input.GetMouseButton(0))
-        {
-            touchPosition = Input.mousePosition;
-        }
-        else
-        {
-            return false;
-        }
-
-        RectTransform rectTransform = screens[currentIndex].GetComponent<RectTransform>();
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, touchPosition, null, out Vector2 localPoint);
-
-        return rectTransform.rect.Contains(localPoint);
-    }
-
-    private bool IsAnyScreenActive()
-    {
-        foreach (Image screen in screens)
-        {
-            if (screen.gameObject.activeSelf) return true; // At least one screen is active
-        }
-        return false; // No active screen
+        Swipe();
     }
 
     void Swipe()
@@ -73,12 +42,12 @@ public class SwipeManager : MonoBehaviour
                     {
                         Vector2 distance = currentTouchPosition - startTouchPosition;
 
-                        if (distance.x < -swipeRange) // Right to Left Swipe
+                        if (distance.x < -swipeRange) // Swipe left
                         {
                             SwipeLeft();
                             stopTouch = true;
                         }
-                        else if (distance.x > swipeRange) // Left to Right Swipe
+                        else if (distance.x > swipeRange) // Swipe right
                         {
                             SwipeRight();
                             stopTouch = true;
@@ -121,54 +90,32 @@ public class SwipeManager : MonoBehaviour
         }
     }
 
-    void SwipeRight()
-    {
-        if (currentIndex == 0)
-        {
-            // Disable Screen 1 on Left to Right swipe
-            screens[currentIndex].gameObject.SetActive(false);
-        }
-        else if (currentIndex > 0)
-        {
-            currentIndex--;
-            ShowCurrentScreen();
-        }
-    }
-
     void SwipeLeft()
     {
         if (currentIndex < screens.Length - 1)
         {
             currentIndex++;
-            ShowCurrentScreen();
-        }
-
-        // If we reach last screen, prevent further swipes
-        if (currentIndex == screens.Length - 1)
-        {
-            // Only allow swiping back to Screen 2 (prevent from going forward)
-            currentIndex = screens.Length - 1;
+            screens[currentIndex].gameObject.SetActive(true);
         }
     }
 
-    void ShowCurrentScreen()
+    void SwipeRight()
     {
-        for (int i = 0; i < screens.Length; i++)
+        if (currentIndex >= 0)
         {
-            screens[i].gameObject.SetActive(i == currentIndex);
+            screens[currentIndex].gameObject.SetActive(false);
+            currentIndex--;
         }
     }
 
-    // ✅ Reset Function to restore everything to default
+    // Reset Function: Disable all screens
     public void ResetSwipeManager()
     {
-        currentIndex = 0; // Reset index to the first screen
-        stopTouch = false;
-
-        // Enable the first screen and disable others
-        for (int i = 0; i < screens.Length; i++)
+        foreach (Image screen in screens)
         {
-            screens[i].gameObject.SetActive(false);
+            screen.gameObject.SetActive(false);
         }
+        currentIndex = -1;
+        stopTouch = false;
     }
 }
