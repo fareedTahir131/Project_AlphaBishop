@@ -21,8 +21,11 @@ public class GameUIScript : MonoBehaviour
     public GameObject MainCamera;
 
     public GameObject BlackImage;
+    public GameObject DifficultyLevelScreen;
 
     public GameObject ChessboardPrefab;
+
+    public string StockfishDifficulty_level="easy";
     private GameObject chessboardInstance;
     private Chessboard chessboardScript;
 
@@ -30,6 +33,7 @@ public class GameUIScript : MonoBehaviour
     private BoardSpawnManager pm_script;
 
     private bool isAR;
+    private bool isPvAI_Selected=false;
 
     private GameObject promotionMenu;
 
@@ -42,7 +46,9 @@ public class GameUIScript : MonoBehaviour
 
     private void Start()
     {
+#if !UNITY_EDITOR
         OnARGameButton();
+#endif
     }
 
     // Buttons
@@ -130,7 +136,17 @@ public class GameUIScript : MonoBehaviour
         SceneManager.LoadScene(0);
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-
+    public void EnableDifficultyLevelScreen()
+    {
+        if (isPvAI_Selected)
+        {
+            DifficultyLevelScreen.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("Pvp Mode Selected");
+        }
+    }
     public void onQueenPromotion()
     {
         if(isAR)
@@ -162,6 +178,7 @@ public class GameUIScript : MonoBehaviour
 
     public void onGameMode_PvP()
     {
+        isPvAI_Selected = false;
         if (isAR)
             pm_script.onAR_GameMode_PvP();
         else
@@ -169,6 +186,7 @@ public class GameUIScript : MonoBehaviour
     }
     public void onGameMode_PvAlgo()
     {
+        isPvAI_Selected = true;
         if (isAR)
             pm_script.onAR_GameMode_PvAlgo();
         else
