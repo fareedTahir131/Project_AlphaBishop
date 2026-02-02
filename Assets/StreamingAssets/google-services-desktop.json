@@ -7,22 +7,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:684576813623:ios:4d4b44ff7d4522e28585b2",
+        "mobilesdk_app_id": "1:684576813623:android:6bce596eabe6a0b48585b2",
         "android_client_info": {
           "package_name": "com.FYP.ARChess"
         }
       },
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBn0x9VMViSuoo9uwCXgSB6wJDfL6AP_bE"
+          "current_key": "AIzaSyBvOF9xFwU2iscNaHA0vTWlfWRZZqtd-IU"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 0
-        },
         "appinvite_service": {
-          "status": 1
+          "other_platform_oauth_client": []
         }
       }
     }
