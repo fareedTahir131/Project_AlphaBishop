@@ -18,7 +18,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
         [SerializeField] private Canvas coachingCanvas;
         [SerializeField] private GameObject scanningUI;     // Screen 1
         [SerializeField] private GameObject tapToPlaceUI;   // Screen 2
-        [SerializeField] private GameObject[] otherScreens; // Enable after placement
+        [SerializeField] private bool showPlanes = true; // Enable after placement
 
         [Header("Events")]
         public UnityEvent onContentPlaced;
@@ -44,9 +44,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
             scanningUI.SetActive(true);
             tapToPlaceUI.SetActive(false);
-
-            foreach (var screen in otherScreens)
-                screen.SetActive(false);
+            UpdatePlaneVisibility();
         }
 
         void OnEnable()
@@ -69,6 +67,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
                 tapToPlaceUI.SetActive(true);
 
                 placementIndicator.SetActive(true);
+                UpdatePlaneVisibility();
             }
         }
 
@@ -151,9 +150,6 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
             coachingCanvas.gameObject.SetActive(false);
 
-            foreach (var screen in otherScreens)
-                screen.SetActive(true);
-
             placementIndicator.SetActive(false);
 
             onContentPlaced?.Invoke();
@@ -169,6 +165,13 @@ namespace UnityEngine.XR.ARFoundation.Samples
         {
             foreach (var plane in planeManager.trackables)
                 plane.gameObject.SetActive(false);
+        }
+        void UpdatePlaneVisibility()
+        {
+            foreach (var plane in planeManager.trackables)
+            {
+                plane.gameObject.SetActive(showPlanes);
+            }
         }
     }
 }

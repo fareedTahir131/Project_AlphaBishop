@@ -713,7 +713,7 @@ MonoBehaviour:
   coachingCanvas: {fileID: 1598931390}
   scanningUI: {fileID: 2783494017000364970}
   tapToPlaceUI: {fileID: 6765487124232519575}
-  otherScreens: []
+  showPlanes: 0
   onContentPlaced:
     m_PersistentCalls:
       m_Calls: []
