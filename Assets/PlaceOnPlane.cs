@@ -108,7 +108,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
             {
                 placementPoseValid = true;
                 placementPose = hits[0].pose;
-
+                
                 if (!placementIndicator.activeSelf)
                     placementIndicator.SetActive(true);
 
@@ -162,7 +162,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
             coachingCanvas.gameObject.SetActive(false);
 
-            placementIndicator.SetActive(AllowPrefabReposition);
+            placementIndicator.SetActive(false);
 
             onContentPlaced?.Invoke();
 
