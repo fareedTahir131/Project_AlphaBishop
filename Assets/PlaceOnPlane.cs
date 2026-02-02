@@ -19,6 +19,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
         [SerializeField] private GameObject scanningUI;     // Screen 1
         [SerializeField] private GameObject tapToPlaceUI;   // Screen 2
         [SerializeField] private bool showPlanes = true; // Enable after placement
+        [SerializeField] private bool AllowPrefabReposition = true;
 
         [Header("Events")]
         public UnityEvent onContentPlaced;
@@ -73,17 +74,27 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
         void Update()
         {
-            if (spawnedObject != null)
-                return;
+            // if (spawnedObject != null)
+            //     return;
 
             UpdatePlacementIndicator();
 
-            if (!placementPoseValid)
-                return;
+            // if (!placementPoseValid)
+            //     return;
 
             if (TryGetTouch(out _))
             {
-                PlaceObject();
+                if(spawnedObject==null){
+                    PlaceObject();
+                }
+                else if(AllowPrefabReposition){
+                    spawnedObject.transform.SetPositionAndRotation(
+                        placementIndicator.transform.position,
+                        placementIndicator.transform.rotation);
+                }
+                else{
+                    // Do nothing
+                }
             }
         }
 
@@ -104,6 +115,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
                 placementIndicator.transform.SetPositionAndRotation(
                     placementPose.position,
                     placementPose.rotation);
+                    
             }
             else
             {
@@ -150,7 +162,7 @@ namespace UnityEngine.XR.ARFoundation.Samples
 
             coachingCanvas.gameObject.SetActive(false);
 
-            placementIndicator.SetActive(false);
+            placementIndicator.SetActive(AllowPrefabReposition);
 
             onContentPlaced?.Invoke();
 
