@@ -99,6 +99,9 @@ namespace UnityEngine.XR.ARFoundation.Samples
                 placementPoseValid = true;
                 placementPose = hits[0].pose;
 
+                if (!placementIndicator.activeSelf)
+                    placementIndicator.SetActive(true);
+
                 placementIndicator.transform.SetPositionAndRotation(
                     placementPose.position,
                     placementPose.rotation);
@@ -106,9 +109,12 @@ namespace UnityEngine.XR.ARFoundation.Samples
             else
             {
                 placementPoseValid = false;
-                placementIndicator.SetActive(false);
+
+                if (placementIndicator.activeSelf)
+                    placementIndicator.SetActive(false);
             }
         }
+
 
         // -------------------------------------
 
