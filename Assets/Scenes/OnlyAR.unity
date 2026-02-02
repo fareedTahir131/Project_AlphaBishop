@@ -709,6 +709,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PlacedPrefab: {fileID: 2383106451406434682, guid: 4af47a66436d17541b698e67d472fa91, type: 3}
+  placementIndicator: {fileID: 5278573886257564237}
+  coachingCanvas: {fileID: 1598931390}
+  scanningUI: {fileID: 2783494017000364970}
+  tapToPlaceUI: {fileID: 6765487124232519575}
+  otherScreens: []
   onContentPlaced:
     m_PersistentCalls:
       m_Calls: []
